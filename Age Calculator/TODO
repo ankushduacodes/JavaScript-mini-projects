@@ -1,0 +1,11 @@
+age calculator
+Todo:
+  ☐ add days and hours and minutes calculation when pressed calculate
+  ☐ add drop down menu to calculate age in:
+    ☐ days
+    ☐ hours
+    ☐ minutes
+    ☐ seconds
+    ☐ milliseconds
+  ☐ Trigger calculate button when pressed enter
+  ☐ Add functionality to reqiure input when calulate button is pressed which seem to be easy but if there is no form tag(added alert for now)
