@@ -7,10 +7,22 @@ calculateBtn = document.getElementById("calculate-btn")
 result = document.getElementById("result")
 
 function checkValidInput() {
-  if (document.getElementById('mydate').value === "") {
+  mydate = document.getElementById('mydate')
+  if (mydate.value === "") {
     alert("Missing date")
     return false;
   }
+
+  if (parseInt(mydate.value.split('-')[0]) < 1903) {
+    alert('Oldest person alive was born on 1903-01-02, Please enter a valid date')
+    return false;
+  }
+
+  if (parseInt(mydate.value.split('-')[0]) > today.split('-')[0]) {
+    alert(`Today's date is ${today}, Please enter a valid date`)
+    return false;
+  }
+
   return true;
 }
 
