@@ -2,24 +2,26 @@ let today = new Date().toISOString().slice(0, 10);
 
 document.getElementById("mydate").max = today;
 
-calculateBtn = document.getElementById("calculate-btn")
+calculateBtn = document.getElementById("calculate-btn");
 
-result = document.getElementById("result")
+result = document.getElementById("result");
 
 function checkValidInput() {
-  mydate = document.getElementById('mydate')
+  mydate = document.getElementById("mydate");
   if (mydate.value === "") {
-    alert("Missing date")
+    alert("Missing date");
     return false;
   }
 
-  if (parseInt(mydate.value.split('-')[0]) < 1903) {
-    alert('Oldest person alive was born on 1903-01-02, Please enter a valid date')
+  if (parseInt(mydate.value.split("-")[0]) < 1903) {
+    alert(
+      "Oldest person alive was born on 1903-01-02, Please enter a valid date"
+    );
     return false;
   }
 
-  if (parseInt(mydate.value.split('-')[0]) > today.split('-')[0]) {
-    alert(`Today's date is ${today}, Please enter a valid date`)
+  if (parseInt(mydate.value.split("-")[0]) > today.split("-")[0]) {
+    alert(`Today's date is ${today}, Please enter a valid date`);
     return false;
   }
 
@@ -35,9 +37,9 @@ function calculate() {
     return;
   }
   dateOfBirth = document.getElementById("mydate").value.split("-");
-  todayDate = today.split("-")
-  age = todayDate[0] - dateOfBirth[0]
-  showResult(age)
+  todayDate = today.split("-");
+  age = todayDate[0] - dateOfBirth[0];
+  showResult(age);
 }
 
-calculateBtn.addEventListener("click", calculate)
+calculateBtn.addEventListener("click", calculate);
