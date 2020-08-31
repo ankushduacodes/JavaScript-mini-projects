@@ -7,7 +7,7 @@ calculateBtn = document.getElementById("calculate-btn");
 result = document.getElementById("result");
 
 function checkValidInput() {
-  mydate = document.getElementById("mydate");
+  let mydate = document.getElementById("mydate");
   if (mydate.value === "") {
     alert("Missing date");
     return false;
@@ -36,9 +36,9 @@ function calculate() {
   if (!checkValidInput()) {
     return;
   }
-  dateOfBirth = document.getElementById("mydate").value.split("-");
-  todayDate = today.split("-");
-  age = todayDate[0] - dateOfBirth[0];
+  let dateOfBirth = document.getElementById("mydate").value.split("-");
+  let todayDate = today.split("-");
+  let age = todayDate[0] - dateOfBirth[0];
   showResult(age);
 }
 
