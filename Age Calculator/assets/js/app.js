@@ -8,8 +8,7 @@ let calculateBtn = document.getElementById("calculate-btn");
 let result = document.getElementById("result");
 let feedback = document.getElementsByClassName("invalid-feedback")[0];
 
-function checkValidInput() {
-  let mydate = document.getElementById("mydate");
+function checkValidInput(mydate) {
   if (mydate.value === "") {
     if (!mydate.classList.contains("is-invalid")) {
       mydate.className += " is-invalid";
@@ -43,63 +42,64 @@ function checkValidInput() {
 
 function writeResult(age, opt) {
   if (opt === "YEAR"){
-    result.textContent = ` You are ${age} years old`;
+    result.textContent = `You are ${age} years old`;
   } else if (opt === "MONTH") {
-    result.textContent = ` You are ${age} months old`;
+    result.textContent = `You are ${age} months old`;
   } else if (opt === "DAY") {
-    result.textContent = ` You are ${age} days old`;
+    result.textContent = `You are ${age} days old`;
   } else if (opt === "HOUR"){
-    result.textContent = ` You are ${age} hours old`;
+    result.textContent = `You are ${age} hours old`;
   } else if (opt === "MINUTE") {
-    result.textContent = ` You are ${age} minutes old`;
+    result.textContent = `You are ${age} minutes old`;
   } else if (opt === "SECOND") {
     result.textContent = ` You are ${age} seconds old`;
   }
 }
 
-function calculateAgeInYears(dateOfBirth) {
-  if (!checkValidInput()) {
-    return false;
-  }
+function calculateAgeInYears(mydate) {
+  mydate.classList.remove("is-invalid")
+  let dateOfBirth = mydate.value.split("-");
   let age = todayDate[0] - dateOfBirth[0];
   writeResult(age, "YEAR")
 }
 
-function calculateAgeInMonths(dateOfBirth) {
-  if (!checkValidInput()) {
-    return false;
-  }
+function calculateAgeInMonths(mydate) {
+  mydate.classList.remove("is-invalid")
+  let dateOfBirth = mydate.value.split("-");
   let age = (((todayDate[0] - dateOfBirth[0]) * 12) + (todayDate[1] - dateOfBirth[1]))
   writeResult(age, "MONTH")
 }
 
-function selectedOption() {
+function selectedOption(mydate) {
   let optIndex = document.getElementById("mySelect").selectedIndex;
-  let dateOfBirth = document.getElementById("mydate").value.split("-");
   switch (optIndex) {
     case 0:
-      calculateAgeInYears(dateOfBirth);
+      calculateAgeInYears(mydate);
       break;
     case 1:
-      calculateAgeInMonths(dateOfBirth);
+      calculateAgeInMonths(mydate);
       break;
     case 2:
-      calculateAgeInDays(dateOfBirth);
+      calculateAgeInDays(mydate);
       break;
     case 3:
-      calculateAgeInHours(dateOfBirth);
+      calculateAgeInHours(mydate);
       break;
     case 4:
-      calculateAgeInMinutes(dateOfBirth);
+      calculateAgeInMinutes(mydate);
       break;
     case 5:
-      calculateAgeInSeconds(dateOfBirth);
+      calculateAgeInSeconds(mydate);
       break;
   }
 }
 
 function calculate() {
-  selectedOption();
+  let mydate = document.getElementById("mydate");
+  if (!checkValidInput(mydate)) {
+    return;
+  }
+  selectedOption(mydate);
 }
 
 calculateBtn.addEventListener("click", calculate);
