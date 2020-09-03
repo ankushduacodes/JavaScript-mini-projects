@@ -1,4 +1,5 @@
 let today = new Date().toISOString().slice(0, 10);
+let todayDate = today.split("-");
 
 document.getElementById("mydate").max = today;
 
@@ -44,49 +45,55 @@ function writeResult(age, opt) {
   if (opt === "YEAR"){
     result.textContent = ` You are ${age} years old`;
   } else if (opt === "MONTH") {
-
+    result.textContent = ` You are ${age} months old`;
   } else if (opt === "DAY") {
-
+    result.textContent = ` You are ${age} days old`;
   } else if (opt === "HOUR"){
-
+    result.textContent = ` You are ${age} hours old`;
   } else if (opt === "MINUTE") {
-
+    result.textContent = ` You are ${age} minutes old`;
   } else if (opt === "SECOND") {
-
+    result.textContent = ` You are ${age} seconds old`;
   }
 }
 
-function calculateAgeInYears() {
+function calculateAgeInYears(dateOfBirth) {
   if (!checkValidInput()) {
     return false;
   }
-  let dateOfBirth = document.getElementById("mydate").value.split("-");
-  let todayDate = today.split("-");
   let age = todayDate[0] - dateOfBirth[0];
   writeResult(age, "YEAR")
 }
 
+function calculateAgeInMonths(dateOfBirth) {
+  if (!checkValidInput()) {
+    return false;
+  }
+  let age = (((todayDate[0] - dateOfBirth[0]) * 12) + (todayDate[1] - dateOfBirth[1]))
+  writeResult(age, "MONTH")
+}
 
 function selectedOption() {
   let optIndex = document.getElementById("mySelect").selectedIndex;
+  let dateOfBirth = document.getElementById("mydate").value.split("-");
   switch (optIndex) {
     case 0:
-      calculateAgeInYears();
+      calculateAgeInYears(dateOfBirth);
       break;
     case 1:
-      calculateAgeInMonths();
+      calculateAgeInMonths(dateOfBirth);
       break;
     case 2:
-      calculateAgeInDays();
+      calculateAgeInDays(dateOfBirth);
       break;
     case 3:
-      calculateAgeInHours;
+      calculateAgeInHours(dateOfBirth);
       break;
     case 4:
-      calculateAgeInMinutes();
+      calculateAgeInMinutes(dateOfBirth);
       break;
     case 5:
-      calculateAgeInSeconds();
+      calculateAgeInSeconds(dateOfBirth);
       break;
   }
 }
