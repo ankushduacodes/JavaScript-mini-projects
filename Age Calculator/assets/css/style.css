@@ -79,3 +79,12 @@ header a:hover {
 .input-group {
   margin-top: 35px;
 }
+
+.error{
+  display: block;
+  float: left
+}
+
+.invalid-feedback {
+  margin-left: 20%;
+}
