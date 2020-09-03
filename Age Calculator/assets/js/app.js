@@ -41,18 +41,25 @@ function checkValidInput(mydate) {
 }
 
 function writeResult(age, opt) {
-  if (opt === "YEAR"){
-    result.textContent = `You are ${age} years old`;
-  } else if (opt === "MONTH") {
-    result.textContent = `You are ${age} months old`;
-  } else if (opt === "DAY") {
-    result.textContent = `You are ${age} days old`;
-  } else if (opt === "HOUR"){
-    result.textContent = `You are ${age} hours old`;
-  } else if (opt === "MINUTE") {
-    result.textContent = `You are ${age} minutes old`;
-  } else if (opt === "SECOND") {
-    result.textContent = ` You are ${age} seconds old`;
+  switch (opt) {
+    case "YEAR":
+      result.textContent = `You are ${age} years old`;
+      break;
+    case "MONTH":
+      result.textContent = `You are ${age} months old`;
+      break;
+    case "DAY":
+      result.textContent = `You are ${age} days old`;
+      break;
+    case "HOUR":
+      result.textContent = `You are ${age} hours old`;
+      break;
+    case "MINUTE":
+      result.textContent = `You are ${age} minutes old`;
+      break;
+    case "SECOND":
+      result.textContent = ` You are ${age} seconds old`;
+      break;
   }
 }
 
