@@ -70,6 +70,14 @@ function calculateAgeInMonths(mydate) {
   writeResult(age, "MONTH")
 }
 
+function calculateAgeInDays(mydate) {
+  mydate.classList.remove("is-invalid")
+  let dateOfBirth = mydate.value.split("-");
+  let age = (((todayDate[0] - dateOfBirth[0]) * 365.25) + ((todayDate[1] - dateOfBirth[1]) * 30.4375) + (todayDate[2] - dateOfBirth[2]))
+  writeResult(age, "DAY")
+}
+
+
 function selectedOption(mydate) {
   let optIndex = document.getElementById("mySelect").selectedIndex;
   switch (optIndex) {
