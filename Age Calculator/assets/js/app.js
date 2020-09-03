@@ -5,23 +5,35 @@ document.getElementById("mydate").max = today;
 calculateBtn = document.getElementById("calculate-btn");
 
 result = document.getElementById("result");
+feedback = document.getElementsByClassName("invalid-feedback")[0];
 
 function checkValidInput() {
   let mydate = document.getElementById("mydate");
   if (mydate.value === "") {
-    alert("Missing date");
+    if (!mydate.classList.contains("is-invalid")) {
+      mydate.className += " is-invalid";
+    }
+    feedback.textContent = "Please enter a valid date";
     return false;
   }
 
   if (parseInt(mydate.value.split("-")[0]) < 1903) {
-    alert(
-      "Oldest person alive was born on 1903-01-02, Please enter a valid date"
-    );
+    if (!mydate.classList.contains("is-invalid")) {
+      mydate.className += " is-invalid";
+    }
+    feedback.textContent = `Please enter a date between 1903-01-01 and ${today}`;
     return false;
   }
 
-  if (parseInt(mydate.value.split("-")[0]) > today.split("-")[0]) {
-    alert(`Today's date is ${today}, Please enter a valid date`);
+  if (
+    parseInt(mydate.value.split("-")[0]) > today.split("-")[0] ||
+    parseInt(mydate.value.split("-")[1]) > today.split("-")[1] ||
+    parseInt(mydate.value.split("-")[2]) > today.split("-")[2]
+  ) {
+    if (!mydate.classList.contains("is-invalid")) {
+      mydate.className += " is-invalid";
+    }
+    feedback.textContent = `Please enter a date between 1903-01-01 and ${today}`;
     return false;
   }
 
