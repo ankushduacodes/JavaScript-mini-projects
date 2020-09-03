@@ -22,27 +22,23 @@
     <div class="container calculator">
       <div class="input-group w-75">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm"
-            >Enter your DOB</span
-          >
+          <span class="input-group-text" id="inputGroup-sizing-sm">Enter your DOB</span>
         </div>
-        <input
-          type="date"
-          id="mydate"
-          class="form-control"
-          aria-describedby="button-addon2"
-          min="1903-01-01"
-          max=""
-          required
-        />
+        <input type="date" id="mydate" class="form-control" aria-describedby="button-addon2" min="1903-01-01" max="" required/>
+        <div class="selector">
+          <select class="custom-select" id="">
+            <option selected>Choose...</option>
+            <option value="1">Age in years</option>
+            <option value="2">Age in months</option>
+            <option value="3">Age in days</option>
+            <option value="3">Age in hours</option>
+            <option value="3">Age in minutes</option>
+            <option value="3">Age in seconds</option>
+          </select>
+        </div>
       </div>
       <div class="input-group-append">
-        <input
-          type="submit"
-          id="calculate-btn"
-          class="btn btn-primary btn-lg"
-          value="Calculate"
-        />
+        <input type="submit" id="calculate-btn" class="btn btn-primary btn-lg" value="Calculate"/>
       </div>
       <div>
         <h2 id="result"></h2>

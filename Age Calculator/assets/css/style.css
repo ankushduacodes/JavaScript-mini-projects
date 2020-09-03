@@ -37,7 +37,7 @@ header a:hover {
 
 .input-group-text,
 .form-control {
-  margin: 40px auto 0 auto;
+  /* margin: 40px auto 0 auto; */
 }
 
 .input-group {
@@ -70,4 +70,12 @@ header a:hover {
   border-radius: 10px;
   padding: 1rem;
   color: #004353;
+}
+
+.selector {
+  height: 36px;
+}
+
+.input-group {
+  margin-top: 35px;
 }
