@@ -35,11 +35,6 @@ header a:hover {
   height: 890px;
 }
 
-.input-group-text,
-.form-control {
-  /* margin: 40px auto 0 auto; */
-}
-
 .input-group {
   margin: auto;
 }
