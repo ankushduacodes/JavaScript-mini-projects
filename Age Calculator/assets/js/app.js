@@ -2,10 +2,10 @@ let today = new Date().toISOString().slice(0, 10);
 
 document.getElementById("mydate").max = today;
 
-calculateBtn = document.getElementById("calculate-btn");
+let calculateBtn = document.getElementById("calculate-btn");
 
-result = document.getElementById("result");
-feedback = document.getElementsByClassName("invalid-feedback")[0];
+let result = document.getElementById("result");
+let feedback = document.getElementsByClassName("invalid-feedback")[0];
 
 function checkValidInput() {
   let mydate = document.getElementById("mydate");
@@ -26,8 +26,8 @@ function checkValidInput() {
   }
 
   if (
-    parseInt(mydate.value.split("-")[0]) > today.split("-")[0] ||
-    parseInt(mydate.value.split("-")[1]) > today.split("-")[1] ||
+    parseInt(mydate.value.split("-")[0]) > today.split("-")[0] &&
+    parseInt(mydate.value.split("-")[1]) > today.split("-")[1] &&
     parseInt(mydate.value.split("-")[2]) > today.split("-")[2]
   ) {
     if (!mydate.classList.contains("is-invalid")) {
@@ -40,18 +40,59 @@ function checkValidInput() {
   return true;
 }
 
-function showResult(age) {
-  result.textContent = ` You are ${age} years old`;
+function writeResult(age, opt) {
+  if (opt === "YEAR"){
+    result.textContent = ` You are ${age} years old`;
+  } else if (opt === "MONTH") {
+
+  } else if (opt === "DAY") {
+
+  } else if (opt === "HOUR"){
+
+  } else if (opt === "MINUTE") {
+
+  } else if (opt === "SECOND") {
+
+  }
 }
 
-function calculate() {
+function calculateAgeInYears() {
   if (!checkValidInput()) {
-    return;
+    return false;
   }
   let dateOfBirth = document.getElementById("mydate").value.split("-");
   let todayDate = today.split("-");
   let age = todayDate[0] - dateOfBirth[0];
-  showResult(age);
+  writeResult(age, "YEAR")
+}
+
+
+function selectedOption() {
+  let optIndex = document.getElementById("mySelect").selectedIndex;
+  switch (optIndex) {
+    case 0:
+      calculateAgeInYears();
+      break;
+    case 1:
+      calculateAgeInMonths();
+      break;
+    case 2:
+      calculateAgeInDays();
+      break;
+    case 3:
+      calculateAgeInHours;
+      break;
+    case 4:
+      calculateAgeInMinutes();
+      break;
+    case 5:
+      calculateAgeInSeconds();
+      break;
+  }
+}
+
+function calculate() {
+  selectedOption();
 }
 
 calculateBtn.addEventListener("click", calculate);
