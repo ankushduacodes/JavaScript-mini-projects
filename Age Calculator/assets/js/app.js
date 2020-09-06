@@ -11,7 +11,7 @@ let feedback = document.getElementsByClassName("invalid-feedback")[0];
 function checkValidInput(mydate) {
   if (mydate.value === "") {
     if (!mydate.classList.contains("is-invalid")) {
-      mydate.className += " is-invalid";
+      mydate.classList.add("is-invalid");
     }
     feedback.textContent = "Please enter a valid date";
     return false;
@@ -19,7 +19,7 @@ function checkValidInput(mydate) {
 
   if (parseInt(mydate.value.split("-")[0]) < 1903) {
     if (!mydate.classList.contains("is-invalid")) {
-      mydate.className += " is-invalid";
+      mydate.classList.add("is-invalid");
     }
     feedback.textContent = `Please enter a date between 1903-01-01 and ${today}`;
     return false;
@@ -31,7 +31,7 @@ function checkValidInput(mydate) {
     parseInt(mydate.value.split("-")[2]) > today.split("-")[2]
   ) {
     if (!mydate.classList.contains("is-invalid")) {
-      mydate.className += " is-invalid";
+      mydate.classList.add("is-invalid");
     }
     feedback.textContent = `Please enter a date between 1903-01-01 and ${today}`;
     return false;
@@ -64,47 +64,50 @@ function writeResult(age, opt) {
 }
 
 function calculateAgeInYears(mydate) {
-  mydate.classList.remove("is-invalid")
+  mydate.classList.remove("is-invalid");
   let dateOfBirth = mydate.value.split("-");
-  let age = todayDate[0] - dateOfBirth[0];
-  writeResult(age, "YEAR")
+  let age = parseInt(todayDate[0]) - parseInt(dateOfBirth[0]);
+  return age
 }
 
 function calculateAgeInMonths(mydate) {
-  mydate.classList.remove("is-invalid")
+  mydate.classList.remove("is-invalid");
   let dateOfBirth = mydate.value.split("-");
-  let age = (((todayDate[0] - dateOfBirth[0]) * 12) + (todayDate[1] - dateOfBirth[1]))
-  writeResult(age, "MONTH")
+  let age =
+    (todayDate[0] - dateOfBirth[0]) * 12 + (todayDate[1] - dateOfBirth[1]);
+    if (parseInt(todayDate[2]) - parseInt(dateOfBirth[2]) < 0) {
+      age -= 1;
+    }
+  return age;
 }
-
-function calculateAgeInDays(mydate) {
-  mydate.classList.remove("is-invalid")
-  let dateOfBirth = mydate.value.split("-");
-  let age = (((todayDate[0] - dateOfBirth[0]) * 365.25) + ((todayDate[1] - dateOfBirth[1]) * 30.4375) + (todayDate[2] - dateOfBirth[2]))
-  writeResult(age, "DAY")
-}
-
 
 function selectedOption(mydate) {
   let optIndex = document.getElementById("mySelect").selectedIndex;
+  let age;
   switch (optIndex) {
     case 0:
-      calculateAgeInYears(mydate);
+      age = calculateAgeInYears(mydate);
+      writeResult(age, "YEAR");
       break;
     case 1:
-      calculateAgeInMonths(mydate);
+      age = calculateAgeInMonths(mydate);
+      writeResult(age, "MONTH");
       break;
     case 2:
-      calculateAgeInDays(mydate);
+      age = calculateAgeInDays(mydate);
+      writeResult(age, "DAY");
       break;
     case 3:
-      calculateAgeInHours(mydate);
+      age = calculateAgeInHours(mydate);
+      writeResult(age, "HOUR");
       break;
     case 4:
-      calculateAgeInMinutes(mydate);
+      age = calculateAgeInMinutes(mydate);
+      writeResult(age, "MINUTE");
       break;
     case 5:
-      calculateAgeInSeconds(mydate);
+      age = calculateAgeInSeconds(mydate);
+      writeResult(age, "SECOND");
       break;
   }
 }

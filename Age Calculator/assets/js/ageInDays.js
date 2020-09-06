@@ -34,6 +34,6 @@ function calculateAgeInDays(mydate) {
   daysInCurrentYear += parseInt(todayDate[2]);
 
   age = daysInCurrentYear + daysInPreviousYears;
-
-  writeResult(age, "DAY");
+  
+  return age;
 }
