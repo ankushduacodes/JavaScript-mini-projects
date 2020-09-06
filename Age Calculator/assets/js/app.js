@@ -81,6 +81,27 @@ function calculateAgeInMonths(mydate) {
   return age;
 }
 
+function calculateAgeInHours(mydate) {
+  mydate.classList.remove("is-invalid");
+  age = calculateAgeInDays(mydate);
+  age *= 24;
+  return age;
+}
+
+function calculateAgeInMinutes(mydate) {
+  mydate.classList.remove("is-invalid");
+  age = calculateAgeInDays(mydate);
+  age *= 24 * 60;
+  return age;
+}
+
+function calculateAgeInSeconds(mydate) {
+  mydate.classList.remove("is-invalid");
+  age = calculateAgeInDays(mydate);
+  age *= 24 * 60 * 60;
+  return age;
+}
+
 function selectedOption(mydate) {
   let optIndex = document.getElementById("mySelect").selectedIndex;
   let age;
