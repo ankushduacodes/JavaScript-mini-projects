@@ -23,19 +23,17 @@ function calculateAgeInDays(mydate) {
     }
   }
 
-  let daysInPreviousYears = (parseInt(todayDate[0]) - parseInt(dateOfBirth[0])) * 365 + leapDays;
+  let daysInPreviousYears =
+    (parseInt(todayDate[0]) - parseInt(dateOfBirth[0])) * 365 + leapDays;
   let daysInCurrentYear = 0;
   for (let i = parseInt(dateOfBirth[1]); i < parseInt(todayDate[1]); i++) {
     daysInCurrentYear += month_obj[i.toString()];
   }
 
-  console.log(typeof parseInt(todayDate[0]))
+  daysInCurrentYear -= parseInt(dateOfBirth[2]) - 1;
+  daysInCurrentYear += parseInt(todayDate[2]);
 
-  daysInCurrentYear -= (parseInt(dateOfBirth[2]) - 1);
-  daysInCurrentYear += parseInt(todayDate[2])
-
-  age = daysInCurrentYear + daysInPreviousYears
+  age = daysInCurrentYear + daysInPreviousYears;
 
   writeResult(age, "DAY");
 }
-
