@@ -11,11 +11,11 @@ An age calculator in JavaScript
   
 # Todo
 - [x] add days and hours and minutes calculation when pressed calculate
-- [ ] Trigger calculate button when pressed enter
-- [ ] Add Unit tests
+- [x] Trigger calculate button when pressed enter
 - [x] add drop down menu to calculate age in:
   - [x] Months
   - [x] days
   - [x] hours
   - [x] minutes
   - [x] seconds
+- [ ] Add Unit tests
