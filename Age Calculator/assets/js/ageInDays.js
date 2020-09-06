@@ -1,3 +1,5 @@
+"use strict";
+
 let month_obj = {
   1: 31,
   2: 28,
@@ -33,7 +35,7 @@ function calculateAgeInDays(mydate) {
   daysInCurrentYear -= parseInt(dateOfBirth[2]) - 1;
   daysInCurrentYear += parseInt(todayDate[2]);
 
-  age = daysInCurrentYear + daysInPreviousYears;
-  
+  let age = daysInCurrentYear + daysInPreviousYears;
+
   return age;
 }

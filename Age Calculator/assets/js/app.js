@@ -1,3 +1,6 @@
+// Whole-script strict mode syntax
+"use strict";
+
 let today = new Date().toISOString().slice(0, 10);
 let todayDate = today.split("-");
 
@@ -67,7 +70,7 @@ function calculateAgeInYears(mydate) {
   mydate.classList.remove("is-invalid");
   let dateOfBirth = mydate.value.split("-");
   let age = parseInt(todayDate[0]) - parseInt(dateOfBirth[0]);
-  return age
+  return age;
 }
 
 function calculateAgeInMonths(mydate) {
@@ -75,29 +78,29 @@ function calculateAgeInMonths(mydate) {
   let dateOfBirth = mydate.value.split("-");
   let age =
     (todayDate[0] - dateOfBirth[0]) * 12 + (todayDate[1] - dateOfBirth[1]);
-    if (parseInt(todayDate[2]) - parseInt(dateOfBirth[2]) < 0) {
-      age -= 1;
-    }
+  if (parseInt(todayDate[2]) - parseInt(dateOfBirth[2]) < 0) {
+    age -= 1;
+  }
   return age;
 }
 
 function calculateAgeInHours(mydate) {
   mydate.classList.remove("is-invalid");
-  age = calculateAgeInDays(mydate);
+  let age = calculateAgeInDays(mydate);
   age *= 24;
   return age;
 }
 
 function calculateAgeInMinutes(mydate) {
   mydate.classList.remove("is-invalid");
-  age = calculateAgeInDays(mydate);
+  let age = calculateAgeInDays(mydate);
   age *= 24 * 60;
   return age;
 }
 
 function calculateAgeInSeconds(mydate) {
   mydate.classList.remove("is-invalid");
-  age = calculateAgeInDays(mydate);
+  let age = calculateAgeInDays(mydate);
   age *= 24 * 60 * 60;
   return age;
 }
@@ -143,12 +146,10 @@ function calculate() {
 
 calculateBtn.addEventListener("click", calculate);
 
-
-
 let input = document.getElementById("mydate");
 
 // Execute a function when the user releases a key on the keyboard
-input.addEventListener("keyup", function(event) {
+input.addEventListener("keyup", function (event) {
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
     // Cancel the default action, if needed
