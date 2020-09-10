@@ -9,7 +9,7 @@ const LOG_EVENT_PLAYER_ATTACK = "PLAYER_ATTACK";
 const LOG_EVENT_MONSTER_ATTACK = "MONSTER_ATTACK";
 const LOG_EVENT_PLAYER_HEAL = "PLAYER_HEAL";
 const LOG_EVENT_GAME_OVER = "GAME_OVER";
-const LOG_EVENT_GAME_RESET = "GAME_RESET"
+const LOG_EVENT_GAME_RESET = "GAME_RESET";
 
 let chosenMaxLife;
 let hasBonusLife = true;
@@ -73,7 +73,7 @@ function reset() {
     chosenMaxLife,
     currentMonsterHealth,
     currentPlayerHealth
-  )
+  );
 }
 
 function gameFinished() {
@@ -168,8 +168,13 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-  console.clear()
-  for (logEntry of battleLog) console.log(logEntry);
+  console.clear();
+  let count = 0;
+  for (const logEntry of battleLog) {
+    console.log(`#${count}`);
+    for (const key in logEntry) console.log(`${key} => ${logEntry[key]}`);
+    count++;
+  }
 }
 
 attackBtn.addEventListener("click", attackHandler);
