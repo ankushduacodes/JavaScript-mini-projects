@@ -9,6 +9,7 @@ const LOG_EVENT_PLAYER_ATTACK = "PLAYER_ATTACK";
 const LOG_EVENT_MONSTER_ATTACK = "MONSTER_ATTACK";
 const LOG_EVENT_PLAYER_HEAL = "PLAYER_HEAL";
 const LOG_EVENT_GAME_OVER = "GAME_OVER";
+const LOG_EVENT_GAME_RESET = "GAME_RESET"
 
 let chosenMaxLife;
 let hasBonusLife = true;
@@ -67,17 +68,41 @@ function reset() {
   currentMonsterHealth = chosenMaxLife;
   currentPlayerHealth = chosenMaxLife;
   resetGame(chosenMaxLife);
+  writeToLog(
+    LOG_EVENT_GAME_RESET,
+    chosenMaxLife,
+    currentMonsterHealth,
+    currentPlayerHealth
+  )
 }
 
 function gameFinished() {
   if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
     alert("You lost");
+    writeToLog(
+      LOG_EVENT_GAME_OVER,
+      "Monster Won",
+      currentMonsterHealth,
+      currentPlayerHealth
+    );
     return true;
   } else if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
     alert("You won");
+    writeToLog(
+      LOG_EVENT_GAME_OVER,
+      "Player Won",
+      currentMonsterHealth,
+      currentPlayerHealth
+    );
     return true;
   } else if (currentMonsterHealth <= 0 && currentPlayerHealth <= 0) {
     alert("It's Draw");
+    writeToLog(
+      LOG_EVENT_GAME_OVER,
+      "Draw",
+      currentMonsterHealth,
+      currentPlayerHealth
+    );
     return true;
   }
   return false;
@@ -105,12 +130,12 @@ function endRound() {
 }
 
 function attack(mode) {
-  let maxDamage;
-  if (mode === MODE_ATTACK) {
-    maxDamage = ATTACK_VALUE;
-  } else if (mode === MODE_STRONG_ATTACK) {
-    maxDamage = STRONG_ATTACK_VALUE;
-  }
+  const maxDamage = mode === MODE_ATTACK ? ATTACK_VALUE : STRONG_ATTACK_VALUE;
+  // if (mode === MODE_ATTACK) {
+  //   maxDamage = ATTACK_VALUE;
+  // } else if (mode === MODE_STRONG_ATTACK) {
+  //   maxDamage = STRONG_ATTACK_VALUE;
+  // }
   attackMonster(maxDamage);
   endRound();
 }
@@ -143,7 +168,8 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-  for (log of battleLog) console.log(log);
+  console.clear()
+  for (logEntry of battleLog) console.log(logEntry);
 }
 
 attackBtn.addEventListener("click", attackHandler);
