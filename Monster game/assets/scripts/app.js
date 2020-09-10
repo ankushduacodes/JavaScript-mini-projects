@@ -45,12 +45,22 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 function attackPlayer() {
   const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
   currentPlayerHealth -= playerDamage;
-  writeToLog(LOG_EVENT_MONSTER_ATTACK, playerDamage, currentMonsterHealth, currentPlayerHealth);
+  writeToLog(
+    LOG_EVENT_MONSTER_ATTACK,
+    playerDamage,
+    currentMonsterHealth,
+    currentPlayerHealth
+  );
 }
 
 function attackMonster(monsterDamage) {
   currentMonsterHealth -= dealMonsterDamage(monsterDamage);
-  writeToLog(LOG_EVENT_PLAYER_ATTACK, monsterDamage, currentMonsterHealth, currentPlayerHealth);
+  writeToLog(
+    LOG_EVENT_PLAYER_ATTACK,
+    monsterDamage,
+    currentMonsterHealth,
+    currentPlayerHealth
+  );
 }
 
 function reset() {
@@ -123,7 +133,12 @@ function healPlayerHandler() {
   }
   increasePlayerHealth(healValue);
   currentPlayerHealth += healValue;
-  writeToLog(LOG_EVENT_PLAYER_HEAL, healValue, currentMonsterHealth, currentPlayerHealth);
+  writeToLog(
+    LOG_EVENT_PLAYER_HEAL,
+    healValue,
+    currentMonsterHealth,
+    currentPlayerHealth
+  );
   endRound();
 }
 
