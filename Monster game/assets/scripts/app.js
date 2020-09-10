@@ -15,11 +15,23 @@ let chosenMaxLife;
 let hasBonusLife = true;
 let battleLog = [];
 
-let enteredValue = prompt("Enter health = ", "100");
-chosenMaxLife = parseInt(enteredValue);
 
-if (isNaN(parseInt(enteredValue)) || enteredValue <= 0) {
+function getMaxLifeValue() {
+  let enteredValue = prompt("Enter max health value: ");
+  parsedValue = parseInt(enteredValue);
+  
+  if (isNaN(parseInt(enteredValue)) || enteredValue <= 0) {
+    throw{message: 'Invalid User Input type'}
+  }
+  return parsedValue;
+}
+
+try {
+  chosenMaxLife = getMaxLifeValue();
+} catch (error) {
+  console.log(error);
   chosenMaxLife = 100;
+  alert("You entered invalid value, we set the value to 100")
 }
 
 let currentMonsterHealth = chosenMaxLife;
