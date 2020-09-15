@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Working with Objects</title>
-    <link rel="stylesheet" href="assets/styles/app.css" />
+    <link rel="stylesheet" href="assets/styles/app.css"/>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="assets/scripts/main.js" defer></script>
   </head>
   <body>
@@ -13,15 +14,24 @@
       <div class="control">
         <label for="title">Favorite Movie</label>
         <input type="text" id="title" />
+        <span class="invalid-feedback">
+          <!-- Set by JavaScript -->
+        </span>
       </div>
       <div class="inline-controls">
         <div class="control">
           <label for="extra-name">Extra Information (Name)</label>
           <input type="text" id="extra-name" />
+          <span class="invalid-feedback">
+            <!-- Set by JavaScript -->
+          </span>
         </div>
         <div class="control">
           <label for="extra-value">Extra Information (Value)</label>
           <input type="text" id="extra-value" />
+          <span class="invalid-feedback">
+            <!-- Set by JavaScript -->
+          </span>
         </div>
       </div>
       <button id="add-movie-btn">Add Movie</button>
